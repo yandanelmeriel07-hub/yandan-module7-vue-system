@@ -1,44 +1,60 @@
 <template>
-  <div class="bg-white rounded-lg shadow p-6 mb-6">
-    <h2 class="text-lg font-semibold text-gray-800 mb-4">
-      {{ editingId ? "Edit Student" : "Add a New Student" }}
-    </h2>
+  <div class="animate-in rounded-3xl p-6 mb-6 border shadow-glow
+              bg-[var(--card)]/80 backdrop-blur-xl border-[var(--card-border)]">
+    <div class="flex items-center gap-2 mb-5">
+      <span class="w-2 h-2 rounded-full bg-gradient-to-r from-[var(--violet)] to-[var(--fuchsia)] animate-pulse"></span>
+      <h2 class="font-brand font-semibold text-lg text-[var(--text)]">
+        {{ editingId ? 'Edit Student' : 'Add New Student' }}
+      </h2>
+    </div>
 
     <form @submit.prevent="handleSubmit" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Student ID</label>
-        <input v-model="form.studentId" type="text" placeholder="e.g. 2023-00123"
-          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+        <label class="block text-xs font-medium mb-1.5 text-[var(--text-muted)]">Student ID</label>
+        <input v-model="form.studentId" type="text" placeholder="2023-00123"
+          class="w-full rounded-xl px-3.5 py-2.5 border bg-[var(--bg)]/50 text-[var(--text)] text-sm
+                 border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--violet)]/40
+                 focus:border-[var(--violet)] transition-all duration-200" />
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <label class="block text-xs font-medium mb-1.5 text-[var(--text-muted)]">Email</label>
         <input v-model="form.email" type="email"
-          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+          class="w-full rounded-xl px-3.5 py-2.5 border bg-[var(--bg)]/50 text-[var(--text)] text-sm
+                 border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--violet)]/40
+                 focus:border-[var(--violet)] transition-all duration-200" />
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+        <label class="block text-xs font-medium mb-1.5 text-[var(--text-muted)]">First Name</label>
         <input v-model="form.firstName" type="text"
-          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+          class="w-full rounded-xl px-3.5 py-2.5 border bg-[var(--bg)]/50 text-[var(--text)] text-sm
+                 border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--violet)]/40
+                 focus:border-[var(--violet)] transition-all duration-200" />
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+        <label class="block text-xs font-medium mb-1.5 text-[var(--text-muted)]">Last Name</label>
         <input v-model="form.lastName" type="text"
-          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+          class="w-full rounded-xl px-3.5 py-2.5 border bg-[var(--bg)]/50 text-[var(--text)] text-sm
+                 border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--violet)]/40
+                 focus:border-[var(--violet)] transition-all duration-200" />
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Course</label>
-        <input v-model="form.course" type="text" placeholder="e.g. BS Computer Science"
-          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+        <label class="block text-xs font-medium mb-1.5 text-[var(--text-muted)]">Course</label>
+        <input v-model="form.course" type="text" placeholder="BS Computer Science"
+          class="w-full rounded-xl px-3.5 py-2.5 border bg-[var(--bg)]/50 text-[var(--text)] text-sm
+                 border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--violet)]/40
+                 focus:border-[var(--violet)] transition-all duration-200" />
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Year Level</label>
+        <label class="block text-xs font-medium mb-1.5 text-[var(--text-muted)]">Year Level</label>
         <select v-model="form.yearLevel"
-          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          class="w-full rounded-xl px-3.5 py-2.5 border bg-[var(--bg)]/50 text-[var(--text)] text-sm
+                 border-[var(--card-border)] focus:outline-none focus:ring-2 focus:ring-[var(--violet)]/40
+                 focus:border-[var(--violet)] transition-all duration-200">
           <option value="1">1st Year</option>
           <option value="2">2nd Year</option>
           <option value="3">3rd Year</option>
@@ -46,21 +62,35 @@
         </select>
       </div>
 
-      <p v-if="errorMessage" class="sm:col-span-2 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md px-3 py-2">
-        {{ errorMessage }}
-      </p>
+      <Transition name="fade" mode="out-in">
+        <p v-if="errorMessage" key="err"
+          class="sm:col-span-2 animate-pop flex items-center gap-2 text-sm rounded-xl px-4 py-2.5
+                 bg-[var(--danger)]/10 text-[var(--danger)] border border-[var(--danger)]/20">
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9" /><path stroke-linecap="round" d="M12 8v5M12 16h.01" />
+          </svg>
+          {{ errorMessage }}
+        </p>
+        <p v-else-if="successMessage" key="ok"
+          class="sm:col-span-2 animate-pop flex items-center gap-2 text-sm rounded-xl px-4 py-2.5
+                 bg-[var(--success)]/10 text-[var(--success)] border border-[var(--success)]/20">
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          {{ successMessage }}
+        </p>
+      </Transition>
 
-      <p v-if="successMessage" class="sm:col-span-2 text-sm text-green-700 bg-green-50 border border-green-200 rounded-md px-3 py-2">
-        {{ successMessage }}
-      </p>
-
-      <div class="sm:col-span-2 flex gap-3">
+      <div class="sm:col-span-2 flex gap-3 pt-1">
         <button type="submit"
-          class="bg-emerald-700 text-white px-4 py-2 rounded-md hover:bg-emerald-800 transition">
-          {{ editingId ? "Update Student" : "Add Student" }}
+          class="btn-shine px-5 py-2.5 rounded-xl font-medium text-sm text-white shadow-glow
+                 bg-gradient-to-r from-[var(--violet)] to-[var(--fuchsia)]
+                 hover:shadow-glow-lg active:scale-[0.97] transition-all duration-200">
+          {{ editingId ? 'Update Student' : 'Add Student' }}
         </button>
         <button v-if="editingId" type="button" @click="cancelEdit"
-          class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition">
+          class="px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 active:scale-[0.97]
+                 bg-[var(--card-border)]/50 text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--card-border)]">
           Cancel
         </button>
       </div>
@@ -95,7 +125,7 @@ function handleSubmit() {
 
   if (!form.value.studentId.trim() || !form.value.firstName.trim() ||
       !form.value.lastName.trim() || !form.value.course.trim()) {
-    errorMessage.value = 'Please fill in Student ID, First Name, Last Name, and Course before submitting.'
+    errorMessage.value = 'Please fill in Student ID, First Name, Last Name, and Course.'
     return
   }
 
@@ -109,8 +139,7 @@ function handleSubmit() {
 
   form.value = { ...emptyForm }
   editingId.value = null
-
-  setTimeout(() => { successMessage.value = '' }, 2500)
+  setTimeout(() => { successMessage.value = '' }, 2400)
 }
 
 function cancelEdit() {
@@ -119,3 +148,8 @@ function cancelEdit() {
   emit('cancel-edit')
 }
 </script>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active { transition: all 0.2s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
+</style>
