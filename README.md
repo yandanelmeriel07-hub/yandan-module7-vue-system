@@ -40,7 +40,7 @@ and Email (based on the `students` table in the Module 6 database plan).
 
 ## Installation and Run Instructions
 ```bash
-git clone https://github.com/USERNAME/yandan-module7-vue-system.git
+git clone https://github.com/yandanelmeriel07-hub/yandan-module7-vue-system.git
 cd yandan-module7-vue-system
 npm install
 npm run dev
