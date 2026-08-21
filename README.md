@@ -59,37 +59,37 @@ proposed future components.
 ## Application Screenshots
 
 ### Running Application
-![Running application](docs/screenshots/01-running-application.png)
+![Running application](docs/screenshots/01-running-application.jpg)
 
 ### Add Record
-![Add record](docs/screenshots/02-add-record.png)
+![Add record](docs/screenshots/02-add-record.jpg)
 
 ### Record List
-![Record list](docs/screenshots/03-record-list.png)
+![Record list](docs/screenshots/03-record-list.jpg)
 
 ### Edit Record
-![Edit record](docs/screenshots/04-edit-record.png)
+![Edit record](docs/screenshots/04-edit-record.jpg)
 
 ### Delete Confirmation
-![Delete confirmation](docs/screenshots/05-delete-confirmation.png)
+![Delete confirmation](docs/screenshots/05-delete-confirmation.jpg)
 
 ### Search Function
-![Search function](docs/screenshots/06-search-function.png)
+![Search function](docs/screenshots/06-search-function.jpg)
 
 ### localStorage (Browser DevTools)
-![localStorage](docs/screenshots/07-localstorage.png)
+![localStorage](docs/screenshots/07-localstorage.jpg)
 
 ### Responsive View
-![Responsive view](docs/screenshots/08-responsive-view.png)
+![Responsive view](docs/screenshots/08-responsive-view.jpg)
 
 ### GitHub Repository
-![GitHub repository](docs/screenshots/09-github-repository.png)
+![GitHub repository](docs/screenshots/09-github-repository.jpg)
 
 ### Commit History
-![Commit history](docs/screenshots/10-commit-history.png)
+![Commit history](docs/screenshots/10-commit-history.jpg)
 
 ### CI Build Success
-![CI success](docs/screenshots/11-ci-success.png)
+![CI success](docs/screenshots/11-ci-success.jpg)
 
 ## Known Limitations and Future Improvements
 - No real backend, API, or database connection — data is browser-local only
